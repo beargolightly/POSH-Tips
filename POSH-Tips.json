@@ -1,0 +1,9 @@
+{
+    "poshtips" : [  { "Number": 1, "Text": "POSH script parameter validation syntax:  [ValidateRange(1,5)][int]$c = 1" },
+                    { "Number": 2, "Text": "1..10 | % {$c = Get-Random -Minimum 1 -Maximum 8 ; $c}" },
+                    { "Number": 3, "Text": "Randomize a list: $InputList | Sort-Object {Get-Random}" },
+                    { "Number": 4, "Text": "Dot-source this function, then pipe things to EasyView to view one line every half-second:  function EasyView { process { $_; Start-Sleep -seconds .5}}" },
+                    { "Number": 5, "Text": "Unpack a delimited list: PS> $env:PSModulePath -split ';'" }
+    ]
+
+}
