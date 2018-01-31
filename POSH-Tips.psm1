@@ -15,15 +15,32 @@
 
 #>
 
+$private = @(Get-ChildItem -Path (Join-Path -Path $PSScriptRoot -ChildPath 'private/*.ps1') -Recurse -ErrorAction Stop)
+
+foreach ($import in @($private)) {
+    try {
+        . $import.FullName
+    }
+    catch {
+        throw "Unable to dot source [$($import.FullName)]"
+    }
+}
+
 function Get-POSHTip {
     param(
-        [int] $TipNumber = $tip
+        [int] $TipNumber = $TipNumber,
+        [bool] $MOTD = $false
         )
     
-    $json  = @( Get-ChildItem -Path $PSScriptRoot\POSH-Tips.json )  # -ErrorAction SilentlyContinue
+    if ($MOTD) {
+        $tip = (getTip 0)
+        Write-Output "Powershell Tip of the Minute #$($tip.number):"
+        Write-Output $tip.text
+        
+    } else {
+        (getTip $TipNumber).text
+    }
 
-    $tips = Get-Content $json|ConvertFrom-Json
-    Write-Output $tips.poshtips[(get-random -Maximum $tips.poshtips.length)].text
+
     
-
 }
