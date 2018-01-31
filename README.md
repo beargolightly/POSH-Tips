@@ -1,3 +1,5 @@
+__I AM ACCEPTING PULL REQUESTS FOR CODE IMPROVEMENTS OR NEW TIPS__
+
 # What's this?
 POSH-Tips is an educational module designed to be added to your Powershell profile, to display a random Powershell tip and code snippet with each new Powershell session.
 
