@@ -34,11 +34,12 @@ function Get-POSHTip {
     
     if ($MOTD) {
         $tip = (getTip 0)
-        Write-Output "Powershell Tip of the Minute #$($tip.number):"
-        Write-Output $tip.text
-        
+        Write-Output "`nPowershell Tip of the Minute #$($tip.number):`n"
+        Write-Output $tip.text "`n"
+
     } else {
-        (getTip $TipNumber).text
+        $tip = getTip ($TipNumber-1)
+        return "Tip #$($tip.number): $($tip.text)"
     }
 
 
